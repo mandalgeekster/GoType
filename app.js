@@ -1,26 +1,11 @@
-var paragraph = "lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged ";   
-// document.querySelector(".one").innerHTML= "<h3>"+paragraph+"</h3>";
+var paragraph = document.querySelector(".one").textContent;   
 var x;
-var words = [];
-var b="";
-for(var i=0;i<paragraph.length;i++)
-{
-    
-    if(paragraph[i]==' ')
-    {
-        words.push(b);
-        b="";
-    }    
-    else
-        b+=paragraph[i];         
-}   
-for(var i=0;i<words.length;i++)
-{
-    document.querySelector(".one").innerHTML+= "<span><h3>"+words[i]+"</h3></span>";
-}
+var words = paragraph.split(" ");
+var b="";   
+var index=0;
 console.log(words); 
-var i=0; 
 
+var i=0,j=0,count=0; 
 document.querySelector(".text").addEventListener("keypress",function(event){
     x=event.key
     console.log(x);
@@ -29,19 +14,62 @@ document.querySelector(".text").addEventListener("keypress",function(event){
 
 function check(letter)
 {
-    if(x==paragraph[i])
+    if(x==" ")
     {
-        console.log(x);
-        // if(x==" ")
-        // {
+        if(count==words[i].length)
+        {
+            console.log(b);
+            var modifiedContent = "";
+            for(var a=0;a<words.length;a++)
+            {
+                if(index==a && words[a]==b)
+                {
+                    console.log(words[a],b);
+                    var span = document.createElement("span");
+                    span.style.color = "green";
+                    span.textContent = words[a];
+                    modifiedContent += span.outerHTML + " ";
+                }
+                else
+                {
+                    modifiedContent += words[a] + " ";
+                }
+            }
+            document.querySelector(".one").innerHTML = modifiedContent.trim();
             
-        // }
+        }   
+        b="";
         i++;
+        index=i;
+        j=0;
+        count=0;
+    }
+    else if(x==words[i][j])
+    { 
+        b+=x;
+        console.log(x);
+        j++;
+        count++;   
     }
     else
     {
-        console.log("err");
-        document.querySelector(".one").style.color="red";
-        i++;
+        // b+=x;
+        var modifiedContent = "";
+        for(var a=0;a<words.length;a++)
+        {
+            if(index==a)
+            {
+                console.log(words[a],b);
+                var span = document.createElement("span");
+                span.style.color = "red";
+                span.textContent = words[a];
+                modifiedContent += span.outerHTML + " ";
+            }
+            else
+            {
+                modifiedContent += words[a] + " ";
+            }
+        }
+        document.querySelector(".one").innerHTML = modifiedContent.trim();
     }
 }
