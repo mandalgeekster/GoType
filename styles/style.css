@@ -105,11 +105,13 @@ a:hover
 }
 .reset
 {
+    border-color:black;
     margin-top: 2%;
     margin-left: 45%;
 }
 .resetbutton
 {
+    border: 3px solid black;
     background-color: white;
     color: black;
     font-weight: bold;
