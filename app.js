@@ -1,74 +1,91 @@
-var paragraph = document.querySelector(".one").textContent;   
-var x;
+var paragraph = "lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged";   
 var words = paragraph.split(" ");
 var b="";   
 var index=0;
-// console.log(words); 
+console.log(words); 
 var i=0,j=0,count=0; 
+update();
+function update()
+{
+    console.log("here");
+    const paraelement = document.querySelector(".one");
+    paraelement.innerHTML="";
+    for(var i=0;i<words.length;i++)
+    {
+        const span = document.createElement("span");
+        span.innerText = words[i] + " ";
+        paraelement.appendChild(span);
+    }
+    document.querySelector(".text").addEventListener("keydown",function(event){
+        check(event);
+    });
+}
 
 document.querySelector(".reset").addEventListener("click",function(event){
     i=0;
     j=0;
-    count=0;
     index=0;
     b="";
     document.querySelector(".text").value="";
-    colorchange("white");
+    const paraelement = document.querySelector(".one");
+    paraelement.innerHTML=paragraph;
+    update();
 });
 
-document.querySelector(".text").addEventListener("keypress",function(event){
-    x=event.key
-    check(x);
-});
-
-function colorchange(str)
+function resettextarea()
 {
-    var modifiedContent = "";
-    for(var a=0;a<words.length;a++)
-    {
-        if(index==a)
-        {
-            var span = document.createElement("span");
-            span.style.color = str;
-            span.textContent = words[a];
-            modifiedContent += span.outerHTML + " ";
-        }
-        else
-        {
-            modifiedContent += words[a] + " ";
-        }
-    }
-    // words[i]=modifiedContent;
-    document.querySelector(".one").innerHTML = modifiedContent.trim();
+    document.querySelector(".text").value="";
 }
 
-colorchange("grey");
-function check(letter)
+const spans = document.getElementsByTagName("span");
+spans[0].classList.add("highlight");
+function check(x)
 {
-    if(x==" ")
+    count++;
+    if(x.key==" ")
     {
         
-        if(count==words[i].length)
+        if(words[i]==b)
         {
-            colorchange("green");
+            console.log(words[i],b);
+            spans[i].classList.remove("incorrect");
+            spans[i].classList.remove("highlight");
+            spans[i].classList.add("correct");
         }   
+        else
+        {
+            console.log(words[i],b);
+            spans[i].classList.remove("highlight");
+            spans[i].classList.add("incorrect");
+        }
         
         b="";
         i++;
         index=i;
-        colorchange("grey");
-        console.log(words);
+        spans[i].classList.add("highlight");
         j=0;
-        count=0;
-        }
-    else if(x==words[i][j])
-    { 
-        b+=x;
-        j++;
-        count++;   
     }
+    else if(x.key === 'Backspace')
+    {
+        b = b.substring(0,j);
+        j--;
+    }
+    else if(x.key==words[i][j])
+    { 
+        b+=x.key;
+        j++;   
+    }
+    
     else
     {
-        colorchange("red");
+        b+=x.key;
+        spans[i].classList.remove("highlight");
+        spans[i].classList.add("incorrect");
+    }
+    if(count==50)
+    {
+        resettextarea();
+        count=0;
     }
 }
+

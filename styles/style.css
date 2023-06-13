@@ -88,6 +88,7 @@ a:hover
 }
 .text
 {
+    resize: none;
     margin-top: 2rem;
     background-color: 71337F;
     height: 19%;
@@ -97,6 +98,7 @@ a:hover
     outline: none !important;
     border:5px solid rgb(92, 12, 82);
     box-shadow: 0 0 10px #eb6308;
+    
 }
 .btn
 {
@@ -115,4 +117,17 @@ a:hover
     background-color: white;
     color: black;
     font-weight: bold;
+}
+
+.correct
+{
+    color:green;
+}
+.incorrect
+{
+    color:red;
+}
+.highlight
+{
+    color:yellow;
 }
