@@ -35,7 +35,7 @@ body
 {
     display: flex;
     flex-wrap: wrap;
-    height: 78%;
+    height: 79%;
 }
 .sidebar
 {
@@ -130,4 +130,12 @@ a:hover
 .highlight
 {
     color:yellow;
+}
+.login
+{
+    font-family: 'VT323', monospace;   
+    margin-top: 4rem;
+    height: 79%;
+    text-align: center;
+    color: #eb6308;
 }

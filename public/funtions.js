@@ -55,10 +55,10 @@ function check(x)
         
         if(words[i]==b)
         {
-            console.log(words[i],b);
             spans[i].classList.remove("incorrect");
             spans[i].classList.remove("highlight");
             spans[i].classList.add("correct");
+            resettextarea();
         }   
         else
         {
