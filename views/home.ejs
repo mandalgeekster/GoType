@@ -2,30 +2,41 @@
 
         <div class="nav">
             <div class="navleft"><h2>GoType</h2></div>
+           
             <div class="navright">
-                <div class="rightitem"><a class="btn  btn-outline-light " href="/login">Login</a></div>
-                <div class="rightitem"><a class="btn  btn-outline-light " href="/signup">Sign Up</a></div>
+               
+                <div class="rightitem"><a class="btn  btn-outline-dark " href="/login">Login</a></div>
+                <div class="rightitem"><a class="btn  btn-outline-dark " href="/signup">Sign Up</a></div>
             </div>
         </div>
 
-
         <div class="body">
+            
             <!-- Side Bar -->
-            <div class="sidebar">
+            <div class="sidebar"> 
                 <div class="sideitem"><h2>Time</h2></div>
                 <div class="settings"><h2>Settings</h2>
                 </div>
             </div>
-
+            
             <!-- paragraph -->
             <div class="para">
-                <div>
+                
+                <div class="input-field">
                     <p><h4 class="one"></h4></p>
-                    <textarea maxlength="50" class="text" placeholder="Type Here!"></textarea>
+                    <textarea maxlength="50" class="text" placeholder="enter text here"></textarea>
                     <div class="reset"><button class="btn resetbutton btn-outline-light">Reset</button></div>
                 </div>
+                <div class="container">
+                    <h5>Light/Dark</h5>
+                    <label id="switch" class="switch">
+                            <input type="checkbox" onchange="toggleTheme()" id="slider">
+                            <span class="slider round"></span>
+                        </label>
+                    <!-- <button id="switch" onclick="toggleTheme()">Switch</button> -->
+                </div> 
             </div>
-
+            
         </div>
 
 <%- include("partials/footer.ejs"); -%>
