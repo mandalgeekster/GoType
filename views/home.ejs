@@ -7,6 +7,7 @@
                
                 <div class="rightitem"><a class="btn  btn-outline-dark " href="/login">Login</a></div>
                 <div class="rightitem"><a class="btn  btn-outline-dark " href="/signup">Sign Up</a></div>
+                <div class="rightitem"><a class="userprofile" href="/userprofile"><img src="Images/user_profile.png" style="height: 2.5rem;"></a></div>
             </div>
         </div>
 
@@ -15,8 +16,29 @@
             <!-- Side Bar -->
             <div class="sidebar"> 
                 <div class="sideitem"><h2>Time</h2></div>
-                <div class="settings"><h2>Settings</h2>
+                <div style="margin-top: 2rem;">   
+                    <input type="checkbox"  class="ch" id="first" name="option" checked>
+                    <label for="first" class="check"><h3>15s</h3></label>
                 </div>
+
+                <div>  
+                    <input type="checkbox"  class="ch" id="second" name="option">
+                    <label for="second" class="check"><h3>30s</h3></label>
+                </div>
+
+                <div>   
+                    <input type="checkbox"  class="ch" id="third" name="option">
+                    <label for="third" class="check"><h3>60s</h3></label>
+                </div>
+
+                <div class="container">
+                    <!-- <h5>Light/Dark</h5> -->
+                    <label id="switch" class="switch">
+                        <input type="checkbox" onchange="toggleTheme()" id="slider">
+                        <span class="slider round"></span>
+                    </label>
+                    <!-- <button id="switch" onclick="toggleTheme()">Switch</button> -->
+                </div> 
             </div>
             
             <!-- paragraph -->
@@ -24,17 +46,13 @@
                 
                 <div class="input-field">
                     <p><h4 class="one"></h4></p>
-                    <textarea maxlength="50" class="text" placeholder="enter text here"></textarea>
+                    <div style="text-align: left; width: 100%;">
+                        <span style="color: lightcoral;"><h3 class="timer" style="margin: 1rem; display: inline;">&nbsp;</h3></span>
+                    </div>
+                    <textarea maxlength="50" class="text" placeholder="enter text here" autofocus="on" onkeypress="starttimer()"></textarea>
                     <div class="reset"><button class="btn resetbutton btn-outline-light">Reset</button></div>
                 </div>
-                <div class="container">
-                    <h5>Light/Dark</h5>
-                    <label id="switch" class="switch">
-                            <input type="checkbox" onchange="toggleTheme()" id="slider">
-                            <span class="slider round"></span>
-                        </label>
-                    <!-- <button id="switch" onclick="toggleTheme()">Switch</button> -->
-                </div> 
+                
             </div>
             
         </div>

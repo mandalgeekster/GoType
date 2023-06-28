@@ -4,8 +4,68 @@ paragraph = paragraph.replace(/[^a-zA-Z0-9 ]/g, '');
 var words = paragraph.split(" ");
 var b="";   
 var index=0;
-console.log(words); 
-var i=0,j=0,count=0;
+var i=0,j=0,count=0,total=1;
+var time=15 , y;
+var currenttime=15;
+
+const spans = document.getElementsByTagName("span");
+spans[0].classList.add("highlight");
+update();
+//logic for checkboxes
+var checkboxes = document.querySelectorAll('input[name="option"]');
+checkboxes.forEach(function(i)
+{
+    i.addEventListener('change',function(){
+        if(this.checked)
+        {
+            checkboxes.forEach(function(other){
+                if(other !== i)
+                {
+                    other.checked = false;
+                }
+            });
+            if(this.id=="first")
+                time=15;
+            else if(this.id=="second")
+                time=30;
+            else if(this.id=="third")
+                time=60;  
+
+            console.log("hello");
+            currenttime=time;
+            clearInterval(y);
+            reset();
+        }
+    });
+});
+
+
+//function for timer
+function starttimer()
+{
+    if(!y)
+    {
+        y = setInterval(function(){
+            document.querySelector(".timer").innerHTML = time;
+            time--;
+            if(time == -1)
+            {
+                clearInterval(y);
+                var acc = (count/total)*100;
+                var wpm ; 
+                if(currenttime == 15)
+                    wpm = count*4;
+                if(currenttime == 30)
+                wpm = count*2;
+                if(currenttime == 60)
+                wpm = count;
+                document.querySelector(".timer").innerHTML= "&nbsp;Wpm : "+wpm+"&nbsp; &nbsp; Accuracy : "+acc.toFixed(2)+"%";
+            }
+        },1000);
+    }   
+}
+
+
 
  // function to set a given theme/color-scheme
  function setTheme(themeName) {
@@ -33,7 +93,7 @@ function toggleTheme() {
     }
 })();
 
-update();
+
 
 function update()
 {       
@@ -50,11 +110,21 @@ function update()
     });
 }
 
-document.querySelector(".reset").addEventListener("click",function(event){
+document.querySelector(".reset").addEventListener("click",reset);
+function reset()
+{
     i=0;
     j=0;
     index=0;
-    b="";
+    b=""; 
+    ////////timer reset///////////////
+    total=0; count=0; time=currenttime;
+    clearInterval(y);
+    y=null;
+    document.querySelector(".timer").innerHTML = "&nbsp;";
+    
+    ///////timer reset///////////////
+
     document.querySelector(".text").value="";
     const paraelement = document.querySelector(".one");
     paraelement.innerHTML="";
@@ -66,23 +136,23 @@ document.querySelector(".reset").addEventListener("click",function(event){
     }
     const spans = document.getElementsByTagName("span");
     spans[0].classList.add("highlight");
-});
+};
 
 function resettextarea()
 {
     document.querySelector(".text").value="";
 }
 
-const spans = document.getElementsByTagName("span");
-spans[0].classList.add("highlight");
+
 function check(x)
 {
-    count++;   
     if(x.key==" ") 
     {              
-        
+        total++;
         if(words[i]==b)
         {
+            console.log(words[i],b);
+            count++;
             spans[i].classList.remove("incorrect");
             spans[i].classList.remove("highlight");
             spans[i].classList.add("correct");
@@ -90,9 +160,9 @@ function check(x)
         }   
         else
         {
-            console.log(words[i],b);
             spans[i].classList.remove("highlight");
             spans[i].classList.add("incorrect");
+            resettextarea();
         }
         
         b="";
@@ -117,10 +187,6 @@ function check(x)
         spans[i].classList.remove("highlight");
         spans[i].classList.add("incorrect");
     }
-    if(count==50)
-    {
-        resettextarea();
-        count=0;
-    }
+    
 }
 

@@ -66,7 +66,6 @@ app.route("/login")
                 {
                     res.render("login",{error_mess: "Invalid User ID or Password"});
                 }
-                    
                 else    
                     res.redirect("/");
             })(req,res);
@@ -101,8 +100,11 @@ app.route("/userprofile")
     if(req.isAuthenticated())
         res.render("userprofile");
     else
-        res.redirect("/login");
+    {
+        res.render("login" , {error_mess : "Please login to view your profile"});
+    }  
 });
+
 
 app.listen("3000",function(req,res){
     console.log("server started");
