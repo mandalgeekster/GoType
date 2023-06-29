@@ -8,9 +8,11 @@ var i=0,j=0,count=0,total=1;
 var time=15 , y;
 var currenttime=15;
 
+
+update();
+
 const spans = document.getElementsByTagName("span");
 spans[0].classList.add("highlight");
-update();
 //logic for checkboxes
 var checkboxes = document.querySelectorAll('input[name="option"]');
 checkboxes.forEach(function(i)
