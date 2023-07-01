@@ -1,18 +1,14 @@
-var paragraph = "lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged";   
-paragraph = paragraph.toLowerCase();
-paragraph = paragraph.replace(/[^a-zA-Z0-9 ]/g, '');
-var words = paragraph.split(" ");
+var words;
 var b="";   
 var index=0;
 var i=0,j=0,count=0,total=1;
 var time=15 , y;
 var currenttime=15;
-
-
-update();
-
-const spans = document.getElementsByTagName("span");
-spans[0].classList.add("highlight");
+hello(p);
+function hello(p)
+{
+    words = p.split(" ");
+}
 //logic for checkboxes
 var checkboxes = document.querySelectorAll('input[name="option"]');
 checkboxes.forEach(function(i)
@@ -33,7 +29,6 @@ checkboxes.forEach(function(i)
             else if(this.id=="third")
                 time=60;  
 
-            console.log("hello");
             currenttime=time;
             clearInterval(y);
             reset();
@@ -61,7 +56,10 @@ function starttimer()
                 wpm = count*2;
                 if(currenttime == 60)
                 wpm = count;
+                resettextarea();
+                document.querySelector(".text").disabled = true;
                 document.querySelector(".timer").innerHTML= "&nbsp;Wpm : "+wpm+"&nbsp; &nbsp; Accuracy : "+acc.toFixed(2)+"%";
+                
             }
         },1000);
     }   
@@ -96,11 +94,11 @@ function toggleTheme() {
 })();
 
 
-
+update();
 function update()
 {       
     const paraelement = document.querySelector(".one");
-    paraelement.innerHTML="";
+    paraelement.innerHTML="&nbsp;";
     for(var i=0;i<words.length;i++)
     {
         const span = document.createElement("span");
@@ -111,6 +109,9 @@ function update()
         check(event);
     });
 }
+
+const spans = document.getElementsByTagName("span");
+spans[0].classList.add("highlight"); 
 
 document.querySelector(".reset").addEventListener("click",reset);
 function reset()
@@ -124,10 +125,15 @@ function reset()
     clearInterval(y);
     y=null;
     document.querySelector(".timer").innerHTML = "&nbsp;";
-    
+    document.querySelector(".text").disabled = false;
+    document.querySelector(".text").autofocus = true;
     ///////timer reset///////////////
 
-    document.querySelector(".text").value="";
+    /////////shuffle//////////////////
+    words.sort(() => Math.random() - 0.5);
+    //////////////////////////////////////////
+
+    resettextarea();
     const paraelement = document.querySelector(".one");
     paraelement.innerHTML="";
     for(var k=0;k<words.length;k++)
