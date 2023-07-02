@@ -2,18 +2,22 @@
 
         <div class="nav">
             <div class="navleft"><h2>GoType</h2></div>
-           
             <div class="navright">
                
-                <div class="rightitem"><a class="btn  btn-outline-dark " href="/login">Login</a></div>
-                <div class="rightitem"><a class="btn  btn-outline-dark " href="/signup">Sign Up</a></div>
-                <div class="rightitem"><a class="userprofile" href="/userprofile"><img src="Images/user_profile.png" style="height: 2.5rem;"></a></div>
+                <% if( islog == true){ %>
+                    <div class="rightitem"><a class="userprofile" href="/userprofile"><img src="Images/user_profile.png" style="height: 2.5rem;"></a></div>
+                <% }else { %>
+                    <div class="rightitem"><a class="btn  btn-outline-dark " href="/login">Login</a></div>
+                    <div class="rightitem"><a class="btn  btn-outline-dark " href="/signup">Sign Up</a></div>
+                    <div class="rightitem"><a class="userprofile" href="/userprofile"><img src="Images/user_profile.png" style="height: 2.5rem;"></a></div>
+                <% } %>
+                
             </div>
         </div>
 
         <div class="body">
             
-            <!-- Side Bar -->
+            
             <div class="sidebar"> 
                 <div class="sideitem"><h2>Time</h2></div>
                 <div style="margin-top: 2rem;">   
@@ -32,25 +36,29 @@
                 </div>
 
                 <div class="container">
-                    <!-- <h5>Light/Dark</h5> -->
+                    <h5>Light/Dark</h5>
                     <label id="switch" class="switch">
                         <input type="checkbox" onchange="toggleTheme()" id="slider">
                         <div class="slider round"></div>
                     </label>
-                    <!-- <button id="switch" onclick="toggleTheme()">Switch</button> -->
+                    <button id="switch" onclick="toggleTheme()" ></button>
                 </div> 
             </div>
             
-            <!-- paragraph -->
             <div class="para">
                 
                 <div class="input-field">
                     <p><h4 class="one"></h4></p>
+                    <script>
+                        var p = "<%= para %>";
+                    </script>
                     <div style="text-align: left; width: 100%;">
                         <h3 class="timer" style="margin: 1rem; display: inline; color:white;-webkit-text-stroke: 1.3px black; font-weight: 800;">&nbsp;</h3>
                     </div>
                     <textarea maxlength="50" class="text" placeholder="enter text here" autofocus="on" onkeypress="starttimer()"></textarea>
-                    <div class="reset"><button class="btn resetbutton btn-outline-light">Reset</button></div>
+                    <!-- <form action="/" method="post"> -->
+                        <div class="reset"><button class="btn resetbutton btn-outline-light">Reset</button></div>
+                    <!-- </form> -->
                 </div>
                 
             </div>
