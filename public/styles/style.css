@@ -292,3 +292,16 @@ h2{
 {
     color: green;
 }
+
+.your_data
+{
+    padding: 3rem;
+    text-align: center;
+    color: white;
+    background-color: black;
+}
+.data
+{
+    margin: 1rem;
+    font-size: large;
+}

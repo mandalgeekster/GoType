@@ -1,11 +1,12 @@
 <%- include("partials/header.ejs"); -%>
 
         <div class="nav">
-            <div class="navleft"><h2>GoType</h2></div>
+            <div class="navleft"><a href="/"><h2>GoType</h2></a></div>
             <div class="navright">
                
                 <% if( islog == true){ %>
                     <div class="rightitem"><a class="userprofile" href="/userprofile"><img src="Images/user_profile.png" style="height: 2.5rem;"></a></div>
+                    <div class="rightitem"><a class="btn  btn-outline-dark " href="/logout">Logout</a></div>
                 <% }else { %>
                     <div class="rightitem"><a class="btn  btn-outline-dark " href="/login">Login</a></div>
                     <div class="rightitem"><a class="btn  btn-outline-dark " href="/signup">Sign Up</a></div>
@@ -56,9 +57,7 @@
                         <h3 class="timer" style="margin: 1rem; display: inline; color:lightcoral">&nbsp;</h3>
                     </div>
                     <textarea maxlength="50" class="text" placeholder="enter text here" autofocus="on" onkeypress="starttimer()"></textarea>
-                    <!-- <form action="/" method="post"> -->
-                        <div class="reset"><button class="btn resetbutton btn-outline-light">Reset</button></div>
-                    <!-- </form> -->
+                    <div class="reset"><button class="btn resetbutton btn-outline-light">Reset</button></div>
                 </div>
                 
             </div>

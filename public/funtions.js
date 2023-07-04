@@ -60,6 +60,19 @@ function starttimer()
                 document.querySelector(".text").disabled = true;
                 document.querySelector(".timer").innerHTML= "&nbsp;Wpm : "+wpm+"&nbsp; &nbsp; Accuracy : "+acc.toFixed(2)+"%";
                 
+                const data = { 
+                    Wpm : wpm ,
+                    Acc : acc.toFixed(2)
+                };
+                
+                fetch('/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+                }).then(response => response.json());
+                                
             }
         },1000);
     }   
