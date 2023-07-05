@@ -290,7 +290,24 @@ h2{
 }
 .ch:checked + .check
 {
+<<<<<<< HEAD
     color: black;
     -webkit-text-stroke: 0.7px orange;
     font-weight: bold;
+=======
+    color: green;
+}
+
+.your_data
+{
+    padding: 3rem;
+    text-align: center;
+    color: white;
+    background-color: black;
+}
+.data
+{
+    margin: 1rem;
+    font-size: large;
+>>>>>>> a98872505031bd8c6cf70a3a3e39017e65dd18dd
 }
