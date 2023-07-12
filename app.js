@@ -61,7 +61,7 @@ const userschema = new mongoose.Schema({
     maxa : {
         type : Number,
         default : 0
-    },
+    },    
 });
 
 
