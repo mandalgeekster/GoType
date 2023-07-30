@@ -157,6 +157,7 @@ function reset()
     }
     const spans = document.getElementsByTagName("span");
     spans[0].classList.add("highlight");
+    document.getElementById("typing-area").focus();
 };
 
 function resettextarea()
