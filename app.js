@@ -8,6 +8,9 @@ const passportlocalmongoose = require("passport-local-mongoose");
 
 const mongoose = require("mongoose");
 
+const PORT = 5000;
+const URL = `http://localhost:${PORT}/`;
+
 const app = express();
 app.use(express.json());
 app.use(express.static("public"));
@@ -231,6 +234,7 @@ app.route("/logout").get(function (req, res) {
   res.redirect("/");
 });
 
-app.listen("3000", function (req, res) {
-  console.log("server started");
+app.listen(PORT, function (req, res) {
+  console.log(`server started at port ${PORT}`);
+  console.log(`visit ${URL} to open page`)
 });
