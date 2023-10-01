@@ -289,3 +289,22 @@ h5:hover {
 a h2:hover {
   color: #c38154;
 }
+
+
+
+.social-icons {
+  display: flex;
+  align-items: center;
+}
+
+.social-icons svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  margin-bottom: 3px;
+  fill: black;
+}
+
+.theme-dark .social-icons svg {
+  fill: white;
+}
