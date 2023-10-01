@@ -308,3 +308,7 @@ a h2:hover {
 .theme-dark .social-icons svg {
   fill: white;
 }
+
+.theme-dark .timer-option {
+  color: rgb(120, 120, 120);
+}
