@@ -269,7 +269,7 @@ h2 {
 }
 .ch:checked + .check {
   color: black;
-  -webkit-text-stroke: 0.7px orange;
+  -webkit-text-stroke: 1.5px orange;
   font-weight: bold;
 }
 
@@ -307,4 +307,8 @@ a h2:hover {
 
 .theme-dark .social-icons svg {
   fill: white;
+}
+
+.theme-dark .timer-option {
+  color: rgb(120, 120, 120);
 }
